@@ -18,10 +18,36 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>50</y>
       <width>781</width>
-      <height>531</height>
+      <height>491</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>381</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Добавить</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="changeButton">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>10</y>
+      <width>381</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Изменить</string>
     </property>
    </widget>
   </widget>
