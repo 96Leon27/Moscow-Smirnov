@@ -1,21 +1,22 @@
 import sqlite3
 import sys
 
-from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtWidgets import QMainWindow, QTableWidgetItem
+from release.UI.main import Ui_MainWindow
+from release.UI.addEditCoffeeForm import add_MainWindow
 
 
-class DBSample(QMainWindow):
+class DBSample(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)
+        self.setupUi(self)
         self.addButton.clicked.connect(self.add)
         self.changeButton.clicked.connect(self.change)
         self.upd()
 
     def upd(self):
-        con = sqlite3.connect("coffee.sqlite")
+        con = sqlite3.connect("data/coffee.sqlite")
         cur = con.cursor()
 
         res = cur.execute('SELECT * FROM coffee').fetchall()
@@ -48,15 +49,15 @@ class DBSample(QMainWindow):
         self.change_coffee_widget.show()
 
 
-class AddCoffeeWidget(QMainWindow):
+class AddCoffeeWidget(QMainWindow, add_MainWindow):
     def __init__(self, parent=None, film_id=None):
         super().__init__(parent)
-        uic.loadUi('addEditCoffeeForm.ui', self)
+        self.setupUi(self)
         self.film_id = film_id
         self.initUI()
 
     def initUI(self):
-        self.con = sqlite3.connect("coffee.sqlite")
+        self.con = sqlite3.connect("data/coffee.sqlite")
         self.cur = self.con.cursor()
 
         if self.film_id is not None:
